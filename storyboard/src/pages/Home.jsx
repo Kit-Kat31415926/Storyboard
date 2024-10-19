@@ -1,28 +1,34 @@
 import React, { useState } from 'react';
-import { Box, Flex, Button, Text, Heading, VStack, Input } from '@chakra-ui/react';
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import { Box, Flex, Button, Text, Heading, VStack, Input } from '@chakra-ui/react'
+import {DndContext, DragOverlay } from '@dnd-kit/core';
+import { Draggable } from '../components/Draggable';
+
 import { TitleBar } from '../components/TitleBar';
 import { SceneCard } from '../components/SceneCard';
 import SideBar from '../components/SideBar';
 
 const Home = () => {
-  const [scenes, setScenes] = useState([]);
-  const [selectedScene, setSelectedScene] = useState(null);
+    // Creates scenes to be displayed
+    const [scenes, setScenes] = useState([]);
+    // Highlights selected scene
+    const [selectedScene, setSelectedScene] = useState(null);
 
-  const addScene = () => {
-    const newScene = {
-      id: `scene-${scenes.length + 1}`,
-      title: `Scene ${scenes.length + 1}`,
-      description: 'New scene description',
-      expanded: false,
+    // Adds scene to screen
+    const addScene = () => {
+        const newScene = {
+            id: `scene-${scenes.length + 1}`,
+            title: `Scene ${scenes.length + 1}`,
+            description: 'New scene description',
+            expanded: false
+        };
+        setScenes([...scenes, newScene]);
     };
-    setScenes([...scenes, newScene]);
-  };
 
-  const toggleDescription = (id) => {
-    setScenes(scenes.map(scene =>
-      scene.id === id ? { ...scene, expanded: !scene.expanded } : scene
-    ));
+    // Increases size of description
+    const toggleDescription = (id) => {
+        setScenes(scenes.map(scene =>
+            scene.id === id ? { ...scene, expanded: !scene.expanded } : scene
+        ));
   };
 
   const onDragEnd = (result) => {
@@ -38,8 +44,8 @@ const Home = () => {
       <SideBar onAddScene={addScene} />
       <Box flex="1" p={8} overflowY="auto">
         <TitleBar selectedScene={selectedScene} onAddScene={addScene} />
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="scenes" direction="horizontal">
+        <DndContext>
+          <DragOverlay>
             {(provided) => (
               <Flex
                 flexWrap="wrap"
@@ -47,7 +53,7 @@ const Home = () => {
                 ref={provided.innerRef}
               >
                 {scenes.map((scene, index) => (
-                  <Draggable key={scene.id} draggableId={scene.id} index={index}>
+                  <Draggable>
                     {(provided, snapshot) => (
                       <Box
                         ref={provided.innerRef}
@@ -72,8 +78,8 @@ const Home = () => {
                 {provided.placeholder}
               </Flex>
             )}
-          </Droppable>
-        </DragDropContext>
+          </DragOverlay>
+        </DndContext>
       </Box>
     </Flex>
   );
