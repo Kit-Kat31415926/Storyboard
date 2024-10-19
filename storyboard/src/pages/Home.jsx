@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';

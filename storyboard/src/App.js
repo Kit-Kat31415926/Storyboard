@@ -10,9 +10,9 @@ function App() {
       <Router>
         <div className='Storyboard'>
           <Routes>
-            <Route path='/LandingPage' element={<LandingPage />} />
             <Route path='/Home' element={<Home />} />
-            <Route path='/' element={<Home />} />
+            <Route path='/LandingPage' element={<LandingPage />} />
+            <Route path='/' element={<LandingPage />} />
           </Routes>
         </div>
       </Router>
