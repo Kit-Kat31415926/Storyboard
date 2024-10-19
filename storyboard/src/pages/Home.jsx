@@ -9,11 +9,11 @@ const Home = () => {
   const [scenes, setScenes] = useState([]);
   const [selectedScene, setSelectedScene] = useState(null);
 
-  const addScene = () => {
+  const addScene = (title, description) => {
     const newScene = {
       id: `scene-${scenes.length + 1}`,
-      title: `Scene ${scenes.length + 1}`,
-      description: 'New scene description',
+      title: title,
+      description: description,
       expanded: false,
     };
     setScenes([...scenes, newScene]);
@@ -37,7 +37,7 @@ const Home = () => {
     <Flex minHeight="100vh" bg="white" fontFamily="'Roboto', sans-serif">
       <SideBar onAddScene={addScene} />
       <Box flex="1" p={8} overflowY="auto">
-        <TitleBar selectedScene={selectedScene} onAddScene={addScene} />
+        {/* <TitleBar selectedScene={selectedScene} onAddScene={null} /> */}
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="scenes" direction="horizontal">
             {(provided) => (
