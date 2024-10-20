@@ -8,7 +8,6 @@ export const SortableItem = ({ id, children }) => {
         <div ref={setNodeRef} {...attributes} {...listeners} style={{ 
           opacity: isDragging ? 0.5 : 1,
           display: 'inline-block', // This allows inline rendering
-          opacity: isDragging ? 0.5 : 1,
           transition: 'opacity 0.2s ease',
           margin: '8px', // Space between items
         }}>

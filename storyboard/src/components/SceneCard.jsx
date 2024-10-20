@@ -1,24 +1,45 @@
 import React from 'react';
+import { Box, Text, Button } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 
-const SceneCard = ({ scene, isSelected, onSelect, onToggleDescription }) => {
-    return (
-        <div 
-            style={{
-                border: isSelected ? '2px solid blue' : '1px solid gray',
-                padding: '10px',
-                borderRadius: '4px',
-                backgroundColor: isSelected ? '#f0f8ff' : 'white',
-                cursor: 'move', // Indicates draggable
-                transition: 'background-color 0.2s, border 0.2s', // Smooth transitions
-                zIndex: 1, // Make sure it's above others when dragging
-            }}
-            onClick={onSelect}
-        >
-            <h3>{scene.title}</h3>
-            {scene.expanded && <p>{scene.description}</p>}
-            <button onClick={() => onToggleDescription(scene.id)}>Toggle Description</button>
-        </div>
-    );
-};
-
-export default SceneCard;
+export const SceneCard = ({ scene, isSelected, onSelect, onToggleDescription }) => (
+  <Box
+    as={motion.div}
+    whileHover={{ scale: 1.02 }}
+    p={4}
+    m={4}
+    bg={isSelected ? 'blue.50' : 'white'}
+    borderRadius="md"
+    boxShadow="md"
+    width="250px"
+    height="300px"
+    overflow="hidden"
+    position="relative"
+    onClick={onSelect}
+  >
+    <Box
+      bg="gray.200"
+      height="150px"
+      mb={2}
+      borderRadius="md"
+    />
+    <Text fontSize="lg" fontWeight="bold" mb={1}>
+      {scene.title}
+    </Text>
+    <Text fontSize="sm" color="gray.600" noOfLines={scene.expanded ? undefined : 2}>
+      {scene.description}
+    </Text>
+    <Button
+      size="xs"
+      position="absolute"
+      bottom={2}
+      right={2}
+      onClick={(e) => {
+        e.stopPropagation();
+        onToggleDescription(scene.id);
+      }}
+    >
+      {scene.expanded ? 'Less' : 'More'}
+    </Button>
+  </Box>
+);
