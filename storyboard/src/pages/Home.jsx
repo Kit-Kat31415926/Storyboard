@@ -37,7 +37,12 @@ const Home = () => {
     setSaveCreate('Create');
     setSelectedSceneIndex(null);
   };
+
   const editScene = (index) => {
+    if (selectedSceneIndex === index) {
+      createNewScene()
+      return
+    }
     const selectedScene = scenes[index];
     // can't use selectedScenesIndex because above operation is asynchronous
     setTitle(selectedScene.title);
@@ -67,7 +72,11 @@ const Home = () => {
         setTitle={setTitle}
         description={description}
         setDescription={setDescription}
-        saveCreate={saveCreate}/>
+        saveCreate={saveCreate}
+        scenes={scenes}
+        setScenes={setScenes}
+        selectedSceneIndex={selectedSceneIndex}
+        createNewScene={createNewScene}/>
       <Box flex="1" p={8} overflowY="auto">
         <TitleBar scenes={scenes} selectedSceneIndex={selectedSceneIndex} createNewScene={createNewScene} />
         <DragDropContext onDragEnd={onDragEnd}>
