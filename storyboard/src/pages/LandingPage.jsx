@@ -103,7 +103,7 @@ const LandingPage = () => {
 
 
     const handleRedirect = () => {
-        navigate('/Home', { state: { text: description } }); // Replace with your desired route
+        navigate('/Home', { state: { text: description, image: imageUrl } }); // Replace with your desired route
     };
 
     return (

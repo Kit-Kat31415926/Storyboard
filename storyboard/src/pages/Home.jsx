@@ -15,7 +15,7 @@ const Home = () => {
       id: `scene-1`,
       title: '',
       description: params.text,
-      image: null,
+      image: params.image,
       expanded: false,
   }];
   } else {
