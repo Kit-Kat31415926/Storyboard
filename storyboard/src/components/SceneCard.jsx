@@ -1,4 +1,5 @@
 import React from 'react';
+import grey from '../assets/greysquare.jpg';
 import { Box, Text, Button, Image } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
@@ -16,7 +17,8 @@ export const SceneCard = ({ scene, isSelected, onSelect, onToggleDescription }) 
     position="relative"
     onClick={onSelect}
   >
-    {scene.image && (
+    <center>
+    {scene.image ? (
       <Image
         src={scene.image}
         alt={scene.title}
@@ -24,9 +26,17 @@ export const SceneCard = ({ scene, isSelected, onSelect, onToggleDescription }) 
         objectFit="cover"
         mb={2}
         borderRadius="md"
+      />) : (
+      <Image
+        src={grey}
+        alt={scene.title}
+        boxSize="150px"
+        objectFit="cover"
+        mb={2}
+        borderRadius="md"
       />
     )}
-    
+    </center>
     <Text fontSize="lg" fontWeight="bold" mb={1}>
       {scene.title}
     </Text>

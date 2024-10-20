@@ -103,6 +103,7 @@ const SideBar = ({ title, setTitle, description, setDescription, saveCreate, sce
     };
 
     return (
+        <div className="font-inkbut">
         <Box className="SideBar" h="full" w="300px" borderWidth="1px" borderRadius="lg" borderColor="gray.200" p={4} bg="gray.50">
             <VStack spacing={4}>
                 <Box w="full">
@@ -161,6 +162,7 @@ const SideBar = ({ title, setTitle, description, setDescription, saveCreate, sce
 
             </VStack>
         </Box>
+        </div>
     );
 };
 

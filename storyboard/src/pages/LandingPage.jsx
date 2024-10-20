@@ -103,11 +103,11 @@ const LandingPage = () => {
 
 
     const handleRedirect = () => {
-        navigate('/Home'); // Replace with your desired route
+        navigate('/Home', { state: { text: description } }); // Replace with your desired route
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center bg-gray-100 p-6">
+        <div className="font-inknut min-h-screen flex flex-col items-center bg-gray-100 p-6">
             <h1 className="text-3xl font-bold text-center mb-4">Welcome to Storyboarding</h1>
             <h2 className="text-xl text-center mb-6">Choose an option to get started:</h2>
     
@@ -126,16 +126,16 @@ const LandingPage = () => {
                 <div className="flex items-center mb-4">
                     <span className="font-semibold mr-2">Live Transcription</span>
                     <img src={mic} alt="microphone" className="w-8 h-8" />
+        
+                    <button
+                        className={`m-10 p-4 py-2 rounded-md text-white ${
+                            isRecording ? 'bg-red-600 hover:bg-red-700' : 'bg-blue-600 hover:bg-blue-700'
+                        }`}
+                        onClick={isRecording ? stopRecording : startRecording}
+                    >
+                        {isRecording ? 'Stop Recording' : 'Start Recording'}
+                    </button>
                 </div>
-    
-                <button
-                    className={`w-full py-2 rounded-md text-white ${
-                        isRecording ? 'bg-red-600 hover:bg-red-700' : 'bg-blue-600 hover:bg-blue-700'
-                    }`}
-                    onClick={isRecording ? stopRecording : startRecording}
-                >
-                    {isRecording ? 'Stop Recording' : 'Start Recording'}
-                </button>
     
                 {imageUrl && (
                     <img
@@ -156,10 +156,10 @@ const LandingPage = () => {
             <br />
             <br />
                 <button
-                    className={`w-full py-2 rounded-md text-black`}
+                    className={`h-12 px-6 m-2 text-lg text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800`}
                     onClick={() => handleRedirect()}
                 >
-                    Start!
+                    Begin!
                 </button>
 
         </div>

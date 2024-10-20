@@ -1,5 +1,5 @@
 
-
+import { useLocation } from 'react-router-dom';
 import React, { useState } from 'react';
 import { Box, Flex, Button, Text, Heading, VStack, Input } from '@chakra-ui/react';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
@@ -8,7 +8,21 @@ import { SceneCard } from '../components/SceneCard';
 import SideBar from '../components/SideBar';
 
 const Home = () => {
-  const [scenes, setScenes] = useState([]);
+  const location = useLocation();
+  const params = location.state;
+  var temp;
+  if (params != null) {
+    temp = [{
+      id: `scene-1`,
+      title: '',
+      description: params.text,
+      image: null,
+      expanded: false,
+  }];
+  } else {
+    temp = []
+  }
+  const [scenes, setScenes] = useState(temp);
   const [selectedSceneIndex, setSelectedSceneIndex] = useState(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -51,7 +65,7 @@ const Home = () => {
   };
 
   return (
-    <Flex minHeight="100vh" bg="white" fontFamily="'Roboto', sans-serif">
+    <Flex minHeight="100vh" bg="white" fontFamily="'Inknut Antiqua', serif">
       <SideBar 
         title={title}
         setTitle={setTitle}
