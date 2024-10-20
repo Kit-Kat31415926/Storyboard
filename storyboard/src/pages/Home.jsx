@@ -45,6 +45,7 @@ const Home = () => {
 
   const editScene = (index) => {
     if (selectedSceneIndex === index) {
+      console.log('Deepgram API Key:', process.env.REACT_APP_DEEPGRAM_API_KEY);
       createNewScene()
       return
     }
