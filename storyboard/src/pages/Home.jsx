@@ -13,23 +13,26 @@ const Home = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [saveCreate, setSaveCreate] = useState('Create');
-  const addScene = (title, description) => {
-    if (saveCreate === "Create") {
-      const newScene = {
-        id: `scene-${scenes.length + 1}`,
-        title: title,
-        description: description,
-        expanded: false,
-      };
-      setScenes([...scenes, newScene]);
-      createNewScene();
-    } else if (saveCreate === "Save") {
-      scenes[selectedSceneIndex].title = title;
-      scenes[selectedSceneIndex].description = description;
-      createNewScene();
-    }
+  const [file, setFile] = useState(null); // Store the uploaded file
+  const [imageUrl, setImageUrl] = useState(null); // Preview of the uploaded image
+
+  // const addScene = (title, description) => {
+  //   if (saveCreate === "Create") {
+  //     const newScene = {
+  //       id: `scene-${scenes.length + 1}`,
+  //       title: title,
+  //       description: description,
+  //       expanded: false,
+  //     };
+  //     setScenes([...scenes, newScene]);
+  //     createNewScene();
+  //   } else if (saveCreate === "Save") {
+  //     scenes[selectedSceneIndex].title = title;
+  //     scenes[selectedSceneIndex].description = description;
+  //     createNewScene();
+  //   }
     
-  };
+  // };
 
   const createNewScene = () => {
     setTitle('');
@@ -67,7 +70,7 @@ const Home = () => {
 
   return (
     <Flex minHeight="100vh" bg="white" fontFamily="'Roboto', sans-serif">
-      <SideBar onAddScene={addScene} 
+      <SideBar 
         title={title}
         setTitle={setTitle}
         description={description}
@@ -76,7 +79,11 @@ const Home = () => {
         scenes={scenes}
         setScenes={setScenes}
         selectedSceneIndex={selectedSceneIndex}
-        createNewScene={createNewScene}/>
+        createNewScene={createNewScene}
+        file={file}
+        setFile={setFile}
+        imageUrl={imageUrl}
+        setImageUrl={setImageUrl}/>
       <Box flex="1" p={8} overflowY="auto">
         <TitleBar scenes={scenes} selectedSceneIndex={selectedSceneIndex} createNewScene={createNewScene} />
         <DragDropContext onDragEnd={onDragEnd}>
