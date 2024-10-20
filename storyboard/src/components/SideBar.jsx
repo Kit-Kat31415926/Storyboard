@@ -138,14 +138,16 @@ const SideBar = ({ title, setTitle, description, setDescription, saveCreate, sce
 
     return (
         <div className="font-inkbut">
-        <Box className="SideBar" h="full" w="300px" borderWidth="1px" borderRadius="lg" borderColor="gray.200" p={4} bg="#FFB6C1">
+        <Box className="SideBar" h="full" w="400px" borderWidth="1px" borderRadius="lg" borderColor="gray.200" p={4} bg="#F5D3D6">
             <VStack spacing={4}>
                 <Box w="full">
                     <Heading as="h2" size="md" mb={4}> Title</Heading>
                     <Input 
                         placeholder="Enter scene title" 
                         value={title} 
-                        bg="#ffffff"
+                        bg="#FFFFFF"
+                        borderColor={"#EFBFC0"}
+                        borderWidth={2}
                         onChange={(e) => setTitle(e.target.value)} 
                         mb={2}
                     />
@@ -159,7 +161,9 @@ const SideBar = ({ title, setTitle, description, setDescription, saveCreate, sce
                         rows={5}
                         minHeight="80px"
                         maxHeight="200px"
-                        bg="#ffffff"
+                        bg="#FFFFFF"
+                        borderColor={"#EFBFC0"}
+                        borderWidth={2}
                     />
                 </Box>
 
@@ -191,34 +195,31 @@ const SideBar = ({ title, setTitle, description, setDescription, saveCreate, sce
                     ref={fileInputRef}
                     bg="#FFFFFF" 
                 />
-                <Box className="SideBar" h="full" w="300px" borderWidth="0px" borderColor="gray.200" p={4} bg="#FFB6C1">
+                <Box display="flex" alignItems="center" className="SideBar" h="full" borderWidth="0px" borderColor="gray.200" p={4} bg="#F5D3D6">
                     <Select 
                         placeholder="Select style" 
                         value={selectedStyle} 
                         onChange={(e) => setSelectedStyle(e.target.value)} 
-                        ml={2}
+                        mr={1}
                         width="150px"
+                        borderColor={"#EFBFC0"}
+                        borderWidth={2}
+                        bg="#FFFFFF"
                     >
-                        <option value="Simplified forms, bold outlines, bright, flat colors, and exaggerated proportions. Vector art for sharp lines and scalability.
-Bright, solid colors with minimal shading. Whimsical characters, humorous scenes, exaggerated expressions, bold lines, fun animations. ">Cartoon</option>
-                        <option value="Vibrant colors, exaggerated facial expressions, dynamic action scenes, and intricate backgrounds.Cell shading for a cartoon-like effect.
-Soft gradients for skin tones. Lens flare and motion blur for dramatic effects.High contrast, expressive eyes, action poses, Studio Ghibli style, dynamic lighting.">Anime</option>
-                        <option value="unreal engine, octane render, bokeh, vray, houdini render, quixel megascans, arnold render, 8k uhd, raytracing, cgi, lumen reflections, cgsociety, ultra realistic, 100mm, film photography, dslr, cinema4d, studio quality, film grain">Realistic</option>
-                        <option value=" Retro style with a limited color palette, blocky designs, and low resolution.Rasterization for pixel precision.
-Dithering to create gradients with limited colors8-bit style, nostalgic graphics, sprite art, game design, retro gaming aesthetics..
-">Pixel Art</option>
-                        <option value=" amazing vivid watercolor painting, fluid washes of color blend seamlessly, watercolor paper texture, drips, sharp, beautiful, painterly, detailed, textural, artistic. Soft, blended colors, fluid shapes, and a dreamy feel. Watercolor simulation for blending and texture. Light diffusion for soft edges and transparency. Ethereal landscapes, flowing forms, gentle hues, soft focus, artistic brush strokes.">Watercolor</option>
-                        <option value="Juxtaposition of realistic elements in bizarre, dreamlike scenarios. Fractal generation for intricate patterns. Distorted perspectives and exaggerated scales. Dreamlike imagery, bizarre combinations, mind-bending scenes, visual paradoxes. Surrealistic. ">Surrealistic</option>
-                        <option value="Simple forms, limited color palette, and a focus on essential elements. Flat design for clarity and simplicity. Clean lines, understated elegance, modern aesthetics, essentialism.
-Use of negative space to emphasize key elements.">Minimalism</option>
-                        <option value=" Bold lines, dynamic poses, and a pop-art feel with vibrant colors.Halftone patterns for shading. Action scenes, superhero themes, dramatic framing, vibrant inks, sequential art.
-Dynamic panel layouts and speech bubbles. ">Comic Book</option>
+                        <option value="Cartoon">Cartoon</option>
+                        <option value="Anime">Anime</option>
+                        <option value="Realistic">Realistic</option>
+                        <option value="Pixel Art">Pixel Art</option>
+                        <option value="Watercolor">Watercolor</option>
+                        <option value="Surrealistic">Surrealistic</option>
+                        <option value="Minimalism">Minimalism</option>
+                        <option value="Comic Book">Comic Book</option>
                     </Select>
-                    <Button colorScheme="blue" onClick={generateImage}>
+                    <Button ml={2} colorScheme="blue" onClick={generateImage}>
                         Generate Image
                     </Button>
                 </Box>
-                <Box className="SideBar" h="full" w="300px" borderWidth="1px" borderRadius="lg" borderColor="#FFB6C1" p={4} bg="#FFB6C1">
+                <Box className="SideBar" h="full" w="300px" borderWidth="1px" borderRadius="lg" borderColor="#F5D3D6" p={4} bg="#F5D3D6">
                     <Box display="flex" justifyContent="space-between" w="full">
                         <Button colorScheme="blue" onClick={() => addScene(title, description)} width="120px">
                             {saveCreate}
