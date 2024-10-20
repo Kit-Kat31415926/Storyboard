@@ -46,11 +46,8 @@ const Home = () => {
   };
 
   const onDragEnd = (result) => {
+    console.log(result);
     if (!result.destination) return;
-    const items = Array.from(scenes);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
-    setScenes(items);
   };
 
   return (
@@ -87,7 +84,7 @@ const Home = () => {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         m={2}
-                        width="200px"
+                        width="250px"
                         transition="transform 0.2s"
                         transform={snapshot.isDragging ? "scale(1.05)" : "scale(1)"}
                         zIndex={snapshot.isDragging ? 100 : 1}

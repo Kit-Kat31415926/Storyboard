@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Box, Button, Input, Heading, Stack, VStack, Text, Image, Textarea } from '@chakra-ui/react';
+import { Box, Button, Input, Heading, VStack, Text, Image, Textarea } from '@chakra-ui/react';
 import mic from '../assets/microphone.png';
 
 const SideBar = ({ title, setTitle, description, setDescription, saveCreate, scenes, setScenes, selectedSceneIndex, createNewScene }) => {
