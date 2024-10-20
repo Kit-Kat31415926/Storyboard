@@ -194,14 +194,20 @@ const SideBar = ({ title, setTitle, description, setDescription, saveCreate, sce
                         ml={2}
                         width="150px"
                     >
-                        <option value="Cartoon">Cartoon</option>
-                        <option value="Anime">Anime</option>
-                        <option value="Realistic">Realistic</option>
-                        <option value="Pixel Art">Pixel Art</option>
-                        <option value="Watercolor">Watercolor</option>
-                        <option value="Surrealistic">Surrealistic</option>
-                        <option value="Minimalism">Minimalism</option>
-                        <option value="Comic Book">Comic Book</option>
+                        <option value="Simplified forms, bold outlines, bright, flat colors, and exaggerated proportions. Vector art for sharp lines and scalability.
+Bright, solid colors with minimal shading. Whimsical characters, humorous scenes, exaggerated expressions, bold lines, fun animations. ">Cartoon</option>
+                        <option value="Vibrant colors, exaggerated facial expressions, dynamic action scenes, and intricate backgrounds.Cell shading for a cartoon-like effect.
+Soft gradients for skin tones. Lens flare and motion blur for dramatic effects.High contrast, expressive eyes, action poses, Studio Ghibli style, dynamic lighting.">Anime</option>
+                        <option value="unreal engine, octane render, bokeh, vray, houdini render, quixel megascans, arnold render, 8k uhd, raytracing, cgi, lumen reflections, cgsociety, ultra realistic, 100mm, film photography, dslr, cinema4d, studio quality, film grain">Realistic</option>
+                        <option value=" Retro style with a limited color palette, blocky designs, and low resolution.Rasterization for pixel precision.
+Dithering to create gradients with limited colors8-bit style, nostalgic graphics, sprite art, game design, retro gaming aesthetics..
+">Pixel Art</option>
+                        <option value=" amazing vivid watercolor painting, fluid washes of color blend seamlessly, watercolor paper texture, drips, sharp, beautiful, painterly, detailed, textural, artistic. Soft, blended colors, fluid shapes, and a dreamy feel. Watercolor simulation for blending and texture. Light diffusion for soft edges and transparency. Ethereal landscapes, flowing forms, gentle hues, soft focus, artistic brush strokes.">Watercolor</option>
+                        <option value="Juxtaposition of realistic elements in bizarre, dreamlike scenarios. Fractal generation for intricate patterns. Distorted perspectives and exaggerated scales. Dreamlike imagery, bizarre combinations, mind-bending scenes, visual paradoxes. Surrealistic. ">Surrealistic</option>
+                        <option value="Simple forms, limited color palette, and a focus on essential elements. Flat design for clarity and simplicity. Clean lines, understated elegance, modern aesthetics, essentialism.
+Use of negative space to emphasize key elements.">Minimalism</option>
+                        <option value=" Bold lines, dynamic poses, and a pop-art feel with vibrant colors.Halftone patterns for shading. Action scenes, superhero themes, dramatic framing, vibrant inks, sequential art.
+Dynamic panel layouts and speech bubbles. ">Comic Book</option>
                     </Select>
                     <Button colorScheme="blue" onClick={generateImage}>
                         Generate Image

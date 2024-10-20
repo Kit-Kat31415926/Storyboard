@@ -33,7 +33,8 @@ app.post('/generate-single-image', async (req, res) => {
 
     const params = {
         prompt,
-        negative_prompt: '(worst quality, low quality, normal quality, (variations):1.4), blur:1.5',
+        negative_prompt: '',
+        // negative_prompt: '(worst quality, low quality, normal quality, (variations):1.4), blur:1.5',
         seed: -1,
         steps: 20,
         guidance_scale: 4,
