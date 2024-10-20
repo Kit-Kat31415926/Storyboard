@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Box, Button, Input, Heading, Stack, VStack, Text, Image, Textarea } from '@chakra-ui/react';
+import { Box, Button, Input, Heading, Stack, VStack, Text, Image, Textarea, Select } from '@chakra-ui/react';
 import mic from '../assets/microphone.png';
 
 const SideBar = ({ title, setTitle, description, setDescription, saveCreate, scenes, setScenes, selectedSceneIndex, createNewScene }) => {
@@ -9,6 +9,7 @@ const SideBar = ({ title, setTitle, description, setDescription, saveCreate, sce
     const [isRecording, setIsRecording] = useState(false);
     const socketRef = useRef(null);
     const mediaRecorderRef = useRef(null);
+    const [selectedStyle, setSelectedStyle] = useState("Cartoon");
 
     const handleUpload = (event) => {
         const selectedFile = event.target.files[0];
@@ -146,6 +147,27 @@ const SideBar = ({ title, setTitle, description, setDescription, saveCreate, sce
                     mb={2} 
                     ref={fileInputRef}
                 />
+                <Box display="flex" justifyContent="space-between" w="full" mb={2}>
+                    <Select 
+                        placeholder="Select style" 
+                        value={selectedStyle} 
+                        onChange={(e) => setSelectedStyle(e.target.value)} 
+                        ml={2}
+                        width="150px"
+                    >
+                        <option value="Cartoon">Cartoon</option>
+                        <option value="Anime">Anime</option>
+                        <option value="Realistic">Realistic</option>
+                        <option value="Pixel Art">Pixel Art</option>
+                        <option value="Watercolor">Watercolor</option>
+                        <option value="Surrealistic">Surrealistic</option>
+                        <option value="Minimalism">Minimalism</option>
+                        <option value="Comic Book">Comic Book</option>
+                    </Select>
+                    <Button colorScheme="blue" onClick={() => { }}>
+                        Generate Image
+                    </Button>
+                </Box>
                 <Box className="SideBar" h="full" w="300px" borderWidth="1px" borderRadius="lg" borderColor="gray.200" p={4} bg="gray.50">
                     <Box display="flex" justifyContent="space-between" w="full">
                         <Button colorScheme="blue" onClick={() => addScene(title, description)} width="120px">
