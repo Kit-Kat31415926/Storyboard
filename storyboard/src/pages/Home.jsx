@@ -39,6 +39,8 @@ const Home = () => {
     setDescription('');
     setSaveCreate('Create');
     setSelectedSceneIndex(null);
+    setFile(null);
+    setImageUrl(null);
   };
 
   const editScene = (index) => {
