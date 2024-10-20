@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Box, Button, Input, Heading, VStack, Text, Image } from '@chakra-ui/react';
 import mic from '../assets/microphone.png';
 
-const SideBar = ({ onAddScene }) => {
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+const SideBar = ({ onAddScene, title, setTitle, description, setDescription, saveCreate }) => {
+    // const [title, setTitle] = useState('');
+    // const [description, setDescription] = useState('');
+    
     const handleUpload = () => {
         // Upload logic here
         console.log("Upload Image");
@@ -33,8 +34,10 @@ const SideBar = ({ onAddScene }) => {
                 <Text fontWeight="bold">Image</Text>
                 <Button onClick={handleUpload} colorScheme="teal" w="full">Upload Image</Button>
                 <VStack spacing={2} w="full">
-                    <Button colorScheme="red" onClick={() => console.log("Delete")}>Delete</Button>
-                    <Button colorScheme="blue" onClick={() => onAddScene(title, description)}>Save</Button>
+                    {saveCreate === "Save" && (
+                        <Button colorScheme="red" onClick={() => console.log("Delete")}>Delete</Button>
+                    )}
+                    <Button colorScheme="blue" onClick={() => onAddScene(title, description)}>{saveCreate}</Button>
                 </VStack>
             </VStack>
         </Box>

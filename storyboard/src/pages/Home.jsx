@@ -1,3 +1,5 @@
+
+
 import React, { useState } from 'react';
 import { Box, Flex, Button, Text, Heading, VStack, Input } from '@chakra-ui/react';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
@@ -7,16 +9,41 @@ import SideBar from '../components/SideBar';
 
 const Home = () => {
   const [scenes, setScenes] = useState([]);
-  const [selectedScene, setSelectedScene] = useState(null);
-
+  const [selectedSceneIndex, setSelectedSceneIndex] = useState(null);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [saveCreate, setSaveCreate] = useState('Create');
   const addScene = (title, description) => {
-    const newScene = {
-      id: `scene-${scenes.length + 1}`,
-      title: title,
-      description: description,
-      expanded: false,
-    };
-    setScenes([...scenes, newScene]);
+    if (saveCreate === "Create") {
+      const newScene = {
+        id: `scene-${scenes.length + 1}`,
+        title: title,
+        description: description,
+        expanded: false,
+      };
+      setScenes([...scenes, newScene]);
+      createNewScene();
+    } else if (saveCreate === "Save") {
+      scenes[selectedSceneIndex].title = title;
+      scenes[selectedSceneIndex].description = description;
+      createNewScene();
+    }
+    
+  };
+
+  const createNewScene = () => {
+    setTitle('');
+    setDescription('');
+    setSaveCreate('Create');
+    setSelectedSceneIndex(null);
+  };
+  const editScene = (index) => {
+    const selectedScene = scenes[index];
+    // can't use selectedScenesIndex because above operation is asynchronous
+    setTitle(selectedScene.title);
+    setDescription(selectedScene.description);
+    setSaveCreate('Save');
+    setSelectedSceneIndex(index);
   };
 
   const toggleDescription = (id) => {
@@ -35,9 +62,14 @@ const Home = () => {
 
   return (
     <Flex minHeight="100vh" bg="white" fontFamily="'Roboto', sans-serif">
-      <SideBar onAddScene={addScene} />
+      <SideBar onAddScene={addScene} 
+        title={title}
+        setTitle={setTitle}
+        description={description}
+        setDescription={setDescription}
+        saveCreate={saveCreate}/>
       <Box flex="1" p={8} overflowY="auto">
-        {/* <TitleBar selectedScene={selectedScene} onAddScene={null} /> */}
+        <TitleBar scenes={scenes} selectedSceneIndex={selectedSceneIndex} createNewScene={createNewScene} />
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="scenes" direction="horizontal">
             {(provided) => (
@@ -61,8 +93,9 @@ const Home = () => {
                       >
                         <SceneCard
                           scene={scene}
-                          isSelected={selectedScene === scene.id}
-                          onSelect={() => setSelectedScene(scene.id)}
+                          isSelected={selectedSceneIndex === index}
+                          onSelect={() => editScene(index)}
+                          // onSelect={() => setSelectedScene(scene.id)}
                           onToggleDescription={toggleDescription}
                         />
                       </Box>
