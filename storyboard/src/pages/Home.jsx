@@ -16,24 +16,6 @@ const Home = () => {
   const [file, setFile] = useState(null); // Store the uploaded file
   const [imageUrl, setImageUrl] = useState(null); // Preview of the uploaded image
 
-  // const addScene = (title, description) => {
-  //   if (saveCreate === "Create") {
-  //     const newScene = {
-  //       id: `scene-${scenes.length + 1}`,
-  //       title: title,
-  //       description: description,
-  //       expanded: false,
-  //     };
-  //     setScenes([...scenes, newScene]);
-  //     createNewScene();
-  //   } else if (saveCreate === "Save") {
-  //     scenes[selectedSceneIndex].title = title;
-  //     scenes[selectedSceneIndex].description = description;
-  //     createNewScene();
-  //   }
-    
-  // };
-
   const createNewScene = () => {
     setTitle('');
     setDescription('');
