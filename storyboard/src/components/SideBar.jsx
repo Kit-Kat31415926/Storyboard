@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Box, Button, Input, Heading, Stack, VStack, Text, Image, Textarea, Select, Spinner } from '@chakra-ui/react';
+import { Box, Button, Input, Heading, VStack, Text, Image, Textarea, Select, Spinner } from '@chakra-ui/react';
 import mic from '../assets/microphone.png';
 
 const SideBar = ({ title, setTitle, description, setDescription, saveCreate, scenes, setScenes, selectedSceneIndex, createNewScene }) => {
@@ -137,13 +137,15 @@ const SideBar = ({ title, setTitle, description, setDescription, saveCreate, sce
     };
 
     return (
-        <Box className="SideBar" h="full" w="300px" borderWidth="1px" borderRadius="lg" borderColor="gray.200" p={4} bg="gray.50">
+        <div className="font-inkbut">
+        <Box className="SideBar" h="full" w="300px" borderWidth="1px" borderRadius="lg" borderColor="gray.200" p={4} bg="#FFB6C1">
             <VStack spacing={4}>
                 <Box w="full">
                     <Heading as="h2" size="md" mb={4}> Title</Heading>
                     <Input 
                         placeholder="Enter scene title" 
                         value={title} 
+                        bg="#ffffff"
                         onChange={(e) => setTitle(e.target.value)} 
                         mb={2}
                     />
@@ -157,6 +159,7 @@ const SideBar = ({ title, setTitle, description, setDescription, saveCreate, sce
                         rows={5}
                         minHeight="80px"
                         maxHeight="200px"
+                        bg="#ffffff"
                     />
                 </Box>
 
@@ -184,9 +187,11 @@ const SideBar = ({ title, setTitle, description, setDescription, saveCreate, sce
                     accept="image/*" 
                     onChange={handleUpload} 
                     mb={2} 
+                    p={1}
                     ref={fileInputRef}
+                    bg="#FFFFFF" 
                 />
-                <Box display="flex" justifyContent="space-between" w="full" mb={2}>
+                <Box className="SideBar" h="full" w="300px" borderWidth="0px" borderColor="gray.200" p={4} bg="#FFB6C1">
                     <Select 
                         placeholder="Select style" 
                         value={selectedStyle} 
@@ -207,7 +212,7 @@ const SideBar = ({ title, setTitle, description, setDescription, saveCreate, sce
                         Generate Image
                     </Button>
                 </Box>
-                <Box className="SideBar" h="full" w="300px" borderWidth="1px" borderRadius="lg" borderColor="gray.200" p={4} bg="gray.50">
+                <Box className="SideBar" h="full" w="300px" borderWidth="1px" borderRadius="lg" borderColor="#FFB6C1" p={4} bg="#FFB6C1">
                     <Box display="flex" justifyContent="space-between" w="full">
                         <Button colorScheme="blue" onClick={() => addScene(title, description)} width="120px">
                             {saveCreate}
@@ -221,6 +226,7 @@ const SideBar = ({ title, setTitle, description, setDescription, saveCreate, sce
                 </Box>
             </VStack>
         </Box>
+        </div>
     );
 };
 
